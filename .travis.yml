@@ -26,7 +26,7 @@ jobs:
         - php bin/console cache:clear --env=dev
         - vendor/bin/phpstan analyze ./src --level 5 --memory-limit 1G
         - vendor/bin/phpunit --coverage-clover clover.xml
-        - cat var/log/test.log | grep ERROR
+        - cat var/log/test.log
       after_script:
         - wget https://scrutinizer-ci.com/ocular.phar
         - php ocular.phar code-coverage:upload --format=php-clover clover.xml
