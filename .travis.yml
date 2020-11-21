@@ -30,7 +30,6 @@ jobs:
         - if [ ! -f saml/sp.crt ]; then php bin/console app:create-certificate --type saml -c DE -s Nordrhein-Westfalen -l Aachen -o SchulIT --organizationalUnitName="SchulIT IT" --commonName=schulit.de --emailAddress=admin@schulit.de; fi
         - vendor/bin/phpstan analyze ./src --level 5 --memory-limit 1G
         - vendor/bin/phpunit --coverage-clover clover.xml
-        - cat var/log/test.log
       after_script:
         - wget https://scrutinizer-ci.com/ocular.phar
         - php ocular.phar code-coverage:upload --format=php-clover clover.xml
